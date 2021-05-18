@@ -15,15 +15,15 @@ final class Loader extends PluginBase{
 
     protected function onLoad(): void{
         self::setInstance($this);
+        
+        Queue::createQueueCategory(Queue::CATEGORY_REQUEST);
+        Queue::createQueueCategory(Queue::CATEGORY_EXCHANGE);
     }
 
     protected function onEnable(): void{
         if (!InvMenuHandler::isRegistered()) {
             InvMenuHandler::register($this);
         }
-
-        Queue::createQueueCategory(Queue::CATEGORY_REQUEST);
-        Queue::createQueueCategory(Queue::CATEGORY_EXCHANGE);
 
         $this->getServer()->getCommandMap()->register(strtolower($this->getName()), new PlayerExchangeCommand($this));
     }
