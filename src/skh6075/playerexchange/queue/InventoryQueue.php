@@ -43,7 +43,7 @@ final class InventoryQueue{
         self::$queue[$player->getName()] = $inventory;
     }
 
-    public static function defaultFieldInventorySlots(Inventory &$inventory, Player $requester, Player $target): void{
+    public static function defaultFieldInventorySlots(Inventory $inventory, Player $requester, Player $target): void{
         foreach (self::BARRIER_FIELD as $barrierSlot) {
             $inventory->setItem($barrierSlot, ItemFactory::getInstance()->get(BlockLegacyIds::SIGN_POST));
         }
